@@ -477,7 +477,11 @@ JustificationHeuristic::findSplitterRec(TNode node, SatValue desiredVal)
    */
   if(isAtom) {
     // if node has embedded skolems due to term removal, resolve that first
-    if (handleEmbeddedSkolems(node) == FOUND_SPLITTER) return FOUND_SPLITTER;
+    if (handleEmbeddedSkolems(node) == FOUND_SPLITTER)
+    {
+        std::cout << "found splitter!" << std::endl;
+        return FOUND_SPLITTER;
+    }
 
     if(litVal != SAT_VALUE_UNKNOWN) {
       Assert(litVal == desiredVal);
@@ -494,7 +498,8 @@ JustificationHeuristic::findSplitterRec(TNode node, SatValue desiredVal)
       Trace("decision-node") << "[decision-node] requesting split on " << d_curDecision
                              << ", node: " << node
                              << ", polarity: " << (desiredVal == SAT_VALUE_TRUE ? "true" : "false") << std::endl;
-      return FOUND_SPLITTER;
+      std::cout << "Splitter found: " << v << std::endl;
+      return NO_SPLITTER;
     }
   }
 

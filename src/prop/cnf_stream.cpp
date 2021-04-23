@@ -252,7 +252,7 @@ TNode CnfStream::getNode(const SatLiteral& literal) {
   Trace("cnf") << "getNode(" << literal << ")\n";
   Trace("cnf") << "getNode(" << literal << ") => "
                << d_literalToNodeMap[literal] << "\n";
-  std::cout << "lit" << literal << std::endl;
+  //std::cout << "lit" << literal << std::endl;
   return d_literalToNodeMap[literal];
 }
 
