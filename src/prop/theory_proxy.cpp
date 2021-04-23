@@ -156,10 +156,16 @@ SatLiteral TheoryProxy::getNextDecisionEngineRequest(bool &stopSearch) {
     Trace("decision") << "  ***  Decision Engine stopped search *** " << std::endl;
   }
   else {
+    if (ret == undefSatLiteral){
+
+    }
+    else {
     auto tnode = getNode(ret);
     tnode.toString();
     std::cout << tnode.toString() << std::endl;
 
+
+    }
   }
 
   return options::decisionStopOnly() ? undefSatLiteral : ret;
