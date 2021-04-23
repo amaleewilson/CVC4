@@ -123,6 +123,8 @@ public:
 
  ~JustificationHeuristic();
 
+
+// Maybe being called from the outside? 
  prop::SatLiteral getNext(bool& stopSearch) override;
 
  /**

@@ -869,6 +869,8 @@ Lit Solver::pickBranchLit()
 
     // DE requests
     bool stopSearch = false;
+
+    // Find a mapping between nextLit and the literal in the theory. 
     nextLit = MinisatSatSolver::toMinisatLit(
         d_proxy->getNextDecisionEngineRequest(stopSearch));
     if(stopSearch) {
