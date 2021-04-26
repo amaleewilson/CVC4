@@ -22,6 +22,7 @@
 // Optional blocks below will be unconditionally included
 #define CVC5_USE_MINISAT
 
+#include <list>
 #include <unordered_set>
 
 #include "context/cdqueue.h"
@@ -79,6 +80,8 @@ class TheoryProxy : public Registrar
   SatLiteral getNextTheoryDecisionRequest();
 
   SatLiteral getNextDecisionEngineRequest(bool& stopSearch);
+
+  void printCubes( const std::list<SatLiteral> &literals );
 
   bool theoryNeedCheck() const;
 

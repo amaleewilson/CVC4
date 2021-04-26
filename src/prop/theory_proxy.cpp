@@ -164,11 +164,32 @@ SatLiteral TheoryProxy::getNextDecisionEngineRequest(bool &stopSearch) {
     tnode.toString();
     std::cout << tnode.toString() << std::endl;
 
-
     }
   }
 
   return options::decisionStopOnly() ? undefSatLiteral : ret;
+}
+
+void TheoryProxy::printCubes( const std::list<SatLiteral> &literals )
+{
+    std::cout << "Printing cubes" << std::endl;
+    std::list<std::string> cubes;
+    cubes.push_back("");
+    for ( const auto &literal : literals )
+    {
+        Assert(literal != undefSatLiteral);
+        std::list<std::string> tmpCubes;
+        for (const auto cube : cubes)
+        {
+            tmpCubes.push_back( cube + " " + getNode(literal).toString() );
+            tmpCubes.push_back( cube + " " + getNode(~literal).toString() );
+        }
+        cubes = tmpCubes;
+    }
+    for (const auto cube : cubes)
+    {
+        std::cout << "(assert (and" << cube << "))" << std::endl;
+    }
 }
 
 bool TheoryProxy::theoryNeedCheck() const {
