@@ -26,6 +26,7 @@
 
 #include <unordered_set>
 #include <utility>
+#include <list>
 
 #include "context/cdhashmap.h"
 #include "context/cdhashset.h"
@@ -67,6 +68,9 @@ class JustificationHeuristic : public ITEDecisionStrategy {
   IntStat d_helpfulness;
   IntStat d_giveup;
   TimerStat d_timestat;
+
+  // The split list
+  std::list<prop::SatLiteral> d_splitlist;
 
   /**
    * A copy of the assertions that need to be justified
@@ -126,6 +130,9 @@ public:
 
 // Maybe being called from the outside? 
  prop::SatLiteral getNext(bool& stopSearch) override;
+
+// Get the split list.
+ std::list<prop::SatLiteral>* getSplitList() override;
 
  /**
   * Notify this class that assertion is an (input) assertion, not corresponding

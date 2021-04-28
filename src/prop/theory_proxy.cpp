@@ -167,6 +167,10 @@ SatLiteral TheoryProxy::getNextDecisionEngineRequest(bool &stopSearch) {
     }
   }
 
+  std::list<SatLiteral>* lst = d_decisionEngine->getJSplitList();
+
+  printCubes(*lst);
+
   return options::decisionStopOnly() ? undefSatLiteral : ret;
 }
 

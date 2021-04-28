@@ -66,6 +66,10 @@ class DecisionEngine {
     Trace("decision") << "Destroying decision engine" << std::endl;
   }
 
+  std::list<prop::SatLiteral>* getJSplitList() {
+    return d_enabledITEStrategy->getSplitList();
+  }
+
   void setSatSolver(CDCLTSatSolverInterface* ss)
   {
     // setPropEngine should not be called more than once

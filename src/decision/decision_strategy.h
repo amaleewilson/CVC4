@@ -24,6 +24,8 @@
 #include "prop/sat_solver_types.h"
 #include "smt/term_formula_removal.h"
 
+#include <list>
+
 namespace cvc5 {
 
 namespace context {
@@ -62,6 +64,8 @@ public:
    * the current assertions.
    */
   virtual void addSkolemDefinition(TNode lem, TNode skolem) = 0;
+
+  virtual std::list<prop::SatLiteral>* getSplitList() = 0;
 };/* class ITEDecisionStrategy */
 
 }  // namespace decision
