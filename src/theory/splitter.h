@@ -1,5 +1,6 @@
 /******************************************************************************
- * Top contributors (to current version):
+ * Top contributors44
+ (to current version):
  *   Amalee Wilson, Andrew Wu
  *
  * This file is part of the cvc5 project.
@@ -41,7 +42,7 @@ class Splitter
       , d_numPartitionsSoFar(0)
       , d_partitionFile(options::writePartitionsToFileName())
   {
-    Assert(numPartitions > 1);
+      //Assert(numPartitions > 1);
     d_valuation = std::make_unique<Valuation>(theoryEngine);
     d_output = &std::cout;
     if (d_partitionFile != ""){
